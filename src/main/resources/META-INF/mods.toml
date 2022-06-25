@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+issueTrackerURL="https://github.com/Crimix/ForceFieldGenerator/issues"
+# Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
+license="All rights reserved"
+
+[[mods]]
+modId="forcefieldgenerator"
+version="${version}"
+displayName="Force-field Generator"
+updateJSONURL="${update_url}"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/force-field-generator"
+logoFile="forcefieldgenerator-logo.png"
+credits="To all my friends for putting up with me breaking the server multiple times during testing"
+authors="black_dog20"
+description='''A force-field generator for player force-fields'''
+
+[[dependencies.forcefieldgenerator]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.forcefieldgenerator]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="SERVER"

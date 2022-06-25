@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "tag": "forge:ingots/netherite"
+  },
+  "addition": {
+    "tag": "forge:nether_stars"
+  },
+  "result": {
+    "item": "forcefieldgenerator:star_infused_netherite_ingot"
+  }
+}

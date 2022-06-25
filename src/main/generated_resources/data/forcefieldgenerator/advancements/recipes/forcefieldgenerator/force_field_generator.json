@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "forcefieldgenerator:force_field_generator"
+    ]
+  },
+  "criteria": {
+    "has_force_field_generator_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "forcefieldgenerator:force_field_generator_core"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "forcefieldgenerator:force_field_generator"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_force_field_generator_core",
+      "has_the_recipe"
+    ]
+  ]
+}

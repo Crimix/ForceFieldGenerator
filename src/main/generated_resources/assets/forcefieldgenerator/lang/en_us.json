@@ -1,0 +1,13 @@
+{
+  "curios.identifier.forcefield_generator": "Torch Holder",
+  "forcefieldgenerator.msg.power_low": "\u00A7cWARNING Force-field power low!!\u00A7r",
+  "forcefieldgenerator.tooltip.item.energy_cost": "\u00A77Cost per hit:\u00A7r",
+  "forcefieldgenerator.tooltip.item.info": "\u00A77Protects the wearer from harm\u00A7r",
+  "forcefieldgenerator.tooltip.item.stored_energy": "\u00A77Stored energy:\u00A7r",
+  "forcefieldgenerator.tooltip.item.turn_off": "\u00A77Use %s to toggle force-field generator on/off\u00A7r",
+  "item.forcefieldgenerator.force_field_generator": "Force-Field Generator",
+  "item.forcefieldgenerator.force_field_generator_core": "Force-Field Generator Core",
+  "item.forcefieldgenerator.force_field_generator_plate": "Force-Field Generator Plate",
+  "item.forcefieldgenerator.star_infused_netherite_ingot": "Start-Infused Netherite",
+  "itemGroup.forcefieldgenerator": "Force-Field Generator"
+}

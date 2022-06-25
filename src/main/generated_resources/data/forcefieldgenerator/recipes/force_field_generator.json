@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nen",
+    "dcd",
+    "nen"
+  ],
+  "key": {
+    "n": {
+      "item": "forcefieldgenerator:force_field_generator_plate"
+    },
+    "e": {
+      "tag": "forge:storage_blocks/emerald"
+    },
+    "d": {
+      "tag": "forge:storage_blocks/diamond"
+    },
+    "c": {
+      "item": "forcefieldgenerator:force_field_generator_core"
+    }
+  },
+  "result": {
+    "item": "forcefieldgenerator:force_field_generator"
+  }
+}
