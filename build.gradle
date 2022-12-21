@@ -66,7 +66,11 @@ minecraft {
                 }
             }
         }
-
+        dev {
+            parent runs.client
+            taskName 'runDev'
+            args '--username', 'Dev2'
+        }
         server {
             workingDirectory project.file('run')
 
@@ -89,7 +93,6 @@ minecraft {
                 }
             }
         }
-
         data {
             workingDirectory project.file('run')
 
@@ -151,6 +154,8 @@ dependencies {
     implementation fg.deobf("curse.maven:charging-gadgets-399757:${charging_gadgets_version}")
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+    compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

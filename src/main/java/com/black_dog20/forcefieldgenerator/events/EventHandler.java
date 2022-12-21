@@ -4,8 +4,8 @@ import com.black_dog20.forcefieldgenerator.ForceFieldGenerator;
 import com.black_dog20.forcefieldgenerator.network.PacketHandler;
 import com.black_dog20.forcefieldgenerator.network.packets.PacketSyncForceFieldTicks;
 import com.black_dog20.forcefieldgenerator.utils.ModUtil;
-import com.google.common.collect.ImmutableSet;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.energy.CapabilityEnergy;
@@ -24,7 +24,7 @@ import java.util.Set;
 @Mod.EventBusSubscriber(modid = ForceFieldGenerator.MOD_ID)
 public class EventHandler {
 
-    private static final Set<DamageSource> IGNORED_SOURCES = ImmutableSet.of(DamageSource.OUT_OF_WORLD, DamageSource.DROWN,  DamageSource.IN_WALL);
+    private static final Set<DamageSource> IGNORED_SOURCES = Set.of(DamageSource.OUT_OF_WORLD, DamageSource.DROWN,  DamageSource.IN_WALL, DamageSource.STARVE, DamageSource.LAVA);
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerKnockBack(LivingKnockBackEvent event) {
@@ -45,7 +45,6 @@ public class EventHandler {
                 if (energy.getEnergyStored() + cost >= 0) {
                     event.setCanceled(true);
                 }
-
             }
         }
     }
@@ -68,6 +67,7 @@ public class EventHandler {
                 ItemStack stack = optionalStack.get();
                 IEnergyStorage energy = optionalEnergy.get();
                 int cost = ModUtil.getEnergyCost(stack);
+                DamageSource source = event.getSource();
 
                 if (energy.getEnergyStored() - cost >= 0) {
                     if (player.getPersistentData().getInt("forcefieldCooldownTicks") == 0) {
@@ -76,10 +76,21 @@ public class EventHandler {
                         player.getPersistentData().putInt("forcefieldCooldownTicks", 20);
                         PacketHandler.NETWORK.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), new PacketSyncForceFieldTicks(player.getUUID(), player.getPersistentData().getInt("forcefieldTicks")));
                     }
+                    handleEffects(player, source);
                     event.setCanceled(true);
                 }
 
             }
+        }
+    }
+
+    private static void handleEffects(Player player, DamageSource source) {
+        if (source == DamageSource.MAGIC && player.hasEffect(MobEffects.POISON)) {
+            player.removeEffect(MobEffects.POISON);
+        } else if (source == DamageSource.WITHER) {
+            player.removeEffect(MobEffects.WITHER);
+        } else if (source == DamageSource.ON_FIRE) {
+            player.clearFire();
         }
     }
 
