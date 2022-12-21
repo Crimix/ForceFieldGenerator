@@ -17,7 +17,7 @@ public class GeneratorLanguageEnglish extends BaseLanguageProvider {
     @Override
     protected void addTranslations() {
         add("itemGroup.forcefieldgenerator", "Force-Field Generator");
-        add("curios.identifier.forcefield_generator", "Torch Holder");
+        add("curios.identifier.forcefield_generator", "Force-Field Generator");
 
         addPrefixed(INFO, "Protects the wearer from harm", ChatFormatting.GRAY);
         addPrefixed(STORED_ENERGY, "Stored energy:", ChatFormatting.GRAY);

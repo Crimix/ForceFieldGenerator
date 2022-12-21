@@ -8,7 +8,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -28,14 +28,14 @@ public class EventHandler {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerKnockBack(LivingKnockBackEvent event) {
-        if (event.getEntityLiving() instanceof Player player) {
+        if (event.getEntity() instanceof Player player) {
             if (player.level.isClientSide)
                 return;
             if (player.isCreative())
                 return;
 
             Optional<ItemStack> optionalStack = ModUtil.findForceFieldGenerator(player);
-            Optional<IEnergyStorage> optionalEnergy = optionalStack.flatMap(stack -> stack.getCapability(CapabilityEnergy.ENERGY, null).resolve());
+            Optional<IEnergyStorage> optionalEnergy = optionalStack.flatMap(stack -> stack.getCapability(ForgeCapabilities.ENERGY, null).resolve());
 
             if (optionalStack.isPresent() && optionalEnergy.isPresent()) {
                 ItemStack stack = optionalStack.get();
@@ -51,7 +51,7 @@ public class EventHandler {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerAttack(LivingAttackEvent event) {
-        if (event.getAmount() > 0 && event.getEntityLiving() instanceof Player player) {
+        if (event.getAmount() > 0 && event.getEntity() instanceof Player player) {
             if (player.level.isClientSide)
                 return;
             if (player.isCreative())
@@ -61,7 +61,7 @@ public class EventHandler {
                 return;
 
             Optional<ItemStack> optionalStack = ModUtil.findForceFieldGenerator(player);
-            Optional<IEnergyStorage> optionalEnergy = optionalStack.flatMap(stack -> stack.getCapability(CapabilityEnergy.ENERGY, null).resolve());
+            Optional<IEnergyStorage> optionalEnergy = optionalStack.flatMap(stack -> stack.getCapability(ForgeCapabilities.ENERGY, null).resolve());
 
             if (optionalStack.isPresent() && optionalEnergy.isPresent()) {
                 ItemStack stack = optionalStack.get();
@@ -95,7 +95,7 @@ public class EventHandler {
     }
 
     @SubscribeEvent
-    public static void onLivingUpdatePlayer(LivingEvent.LivingUpdateEvent event) {
+    public static void onLivingUpdatePlayer(LivingEvent.LivingTickEvent event) {
         if (event.getEntity() instanceof Player player && !event.getEntity().level.isClientSide) {
             if (player.getPersistentData().contains("forcefieldTicks")) {
                 int ticks = player.getPersistentData().getInt("forcefieldTicks");

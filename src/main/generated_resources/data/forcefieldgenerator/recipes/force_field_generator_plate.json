@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "e": {
+      "tag": "forge:gems/emerald"
+    },
+    "n": {
+      "item": "forcefieldgenerator:star_infused_netherite_ingot"
+    }
+  },
   "pattern": [
     " n ",
     "nen",
     " n "
   ],
-  "key": {
-    "n": {
-      "item": "forcefieldgenerator:star_infused_netherite_ingot"
-    },
-    "e": {
-      "tag": "forge:gems/emerald"
-    }
-  },
   "result": {
     "item": "forcefieldgenerator:force_field_generator_plate"
   }

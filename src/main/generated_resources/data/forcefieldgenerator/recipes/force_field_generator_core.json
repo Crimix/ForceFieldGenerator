@@ -1,27 +1,27 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "d": {
+      "item": "minecraft:dragon_breath"
+    },
+    "e": {
+      "tag": "forge:storage_blocks/emerald"
+    },
+    "n": {
+      "item": "forcefieldgenerator:force_field_generator_plate"
+    },
+    "r": {
+      "tag": "forge:storage_blocks/redstone"
+    },
+    "s": {
+      "tag": "forge:nether_stars"
+    }
+  },
   "pattern": [
     "nen",
     "dsd",
     "nrn"
   ],
-  "key": {
-    "n": {
-      "item": "forcefieldgenerator:force_field_generator_plate"
-    },
-    "e": {
-      "tag": "forge:storage_blocks/emerald"
-    },
-    "s": {
-      "tag": "forge:nether_stars"
-    },
-    "d": {
-      "item": "minecraft:dragon_breath"
-    },
-    "r": {
-      "tag": "forge:storage_blocks/redstone"
-    }
-  },
   "result": {
     "item": "forcefieldgenerator:force_field_generator_core"
   }

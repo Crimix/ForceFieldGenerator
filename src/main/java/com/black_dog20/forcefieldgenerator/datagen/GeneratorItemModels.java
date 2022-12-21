@@ -5,6 +5,7 @@ import com.black_dog20.forcefieldgenerator.ForceFieldGenerator;
 import com.black_dog20.forcefieldgenerator.items.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 
 public class GeneratorItemModels extends BaseItemModelProvider {
 
@@ -15,10 +16,9 @@ public class GeneratorItemModels extends BaseItemModelProvider {
     @Override
     protected void registerModels() {
         // Register all of the upgrade items
-        ModItems.ITEMS.getEntries().forEach(item -> {
-            String path = item.get().getRegistryName().getPath();
-            singleTexture(path, mcLoc("item/handheld"), "layer0", modLoc("item/" + path));
-        });
+        ModItems.ITEMS.getEntries().stream()
+                .map(RegistryObject::get)
+                .forEach(this::registerItemModel);
     }
 
     @Override

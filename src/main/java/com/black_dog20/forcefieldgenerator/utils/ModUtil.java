@@ -10,7 +10,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.ModList;
 
@@ -27,7 +27,7 @@ public class ModUtil {
     }
 
     public static Optional<Component> getFormattedEnergyStored(ItemStack stack) {
-        return stack.getCapability(CapabilityEnergy.ENERGY, null).resolve()
+        return stack.getCapability(ForgeCapabilities.ENERGY, null).resolve()
                 .map(energy -> {
                     String stored = MathUtil.formatThousands(energy.getEnergyStored());
                     String maxStored = MathUtil.formatThousands(energy.getMaxEnergyStored());
@@ -54,7 +54,7 @@ public class ModUtil {
     }
 
     public static int getBatteryPercentage(ItemStack stack) {
-        IEnergyStorage energy = stack.getCapability(CapabilityEnergy.ENERGY, null).orElse(null);
+        IEnergyStorage energy = stack.getCapability(ForgeCapabilities.ENERGY, null).orElse(null);
         if (energy != null)
             return Math.min((int) (((float) energy.getEnergyStored() / energy.getMaxEnergyStored()) * 100), 100);
         return 0;
