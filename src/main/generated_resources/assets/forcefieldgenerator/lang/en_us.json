@@ -1,5 +1,6 @@
 {
   "curios.identifier.forcefield_generator": "Force-Field Generator",
+  "forcefieldgenerator.itemGroup.forcefieldgenerator": "Force-Field Generator",
   "forcefieldgenerator.msg.power_low": "§cWARNING Force-field power low!!§r",
   "forcefieldgenerator.tooltip.item.energy_cost": "§7Cost per hit:§r",
   "forcefieldgenerator.tooltip.item.info": "§7Protects the wearer from harm§r",
@@ -13,6 +14,5 @@
   "item.forcefieldgenerator.force_field_generator": "Force-Field Generator",
   "item.forcefieldgenerator.force_field_generator_core": "Force-Field Generator Core",
   "item.forcefieldgenerator.force_field_generator_plate": "Force-Field Generator Plate",
-  "item.forcefieldgenerator.star_infused_netherite_ingot": "Start-Infused Netherite",
-  "itemGroup.forcefieldgenerator": "Force-Field Generator"
+  "item.forcefieldgenerator.star_infused_netherite_ingot": "Start-Infused Netherite"
 }
