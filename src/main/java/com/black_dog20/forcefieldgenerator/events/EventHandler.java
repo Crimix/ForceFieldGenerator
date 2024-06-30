@@ -4,7 +4,10 @@ import com.black_dog20.forcefieldgenerator.ForceFieldGenerator;
 import com.black_dog20.forcefieldgenerator.network.PacketHandler;
 import com.black_dog20.forcefieldgenerator.network.packets.PacketSyncForceFieldTicks;
 import com.black_dog20.forcefieldgenerator.utils.ModUtil;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -24,12 +27,12 @@ import java.util.Set;
 @Mod.EventBusSubscriber(modid = ForceFieldGenerator.MOD_ID)
 public class EventHandler {
 
-    private static final Set<DamageSource> IGNORED_SOURCES = Set.of(DamageSource.OUT_OF_WORLD, DamageSource.DROWN,  DamageSource.IN_WALL, DamageSource.STARVE, DamageSource.LAVA);
+    private static final Set<ResourceKey<DamageType>> IGNORED_SOURCES = Set.of(DamageTypes.FELL_OUT_OF_WORLD, DamageTypes.DROWN, DamageTypes.IN_WALL, DamageTypes.STARVE, DamageTypes.LAVA);
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerKnockBack(LivingKnockBackEvent event) {
         if (event.getEntity() instanceof Player player) {
-            if (player.level.isClientSide)
+            if (player.level().isClientSide)
                 return;
             if (player.isCreative())
                 return;
@@ -52,12 +55,12 @@ public class EventHandler {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPlayerAttack(LivingAttackEvent event) {
         if (event.getAmount() > 0 && event.getEntity() instanceof Player player) {
-            if (player.level.isClientSide)
+            if (player.level().isClientSide)
                 return;
             if (player.isCreative())
                 return;
 
-            if (IGNORED_SOURCES.contains(event.getSource()))
+            if (IGNORED_SOURCES.stream().anyMatch(event.getSource()::is))
                 return;
 
             Optional<ItemStack> optionalStack = ModUtil.findForceFieldGenerator(player);
@@ -85,18 +88,18 @@ public class EventHandler {
     }
 
     private static void handleEffects(Player player, DamageSource source) {
-        if (source == DamageSource.MAGIC && player.hasEffect(MobEffects.POISON)) {
+        if (source.is(DamageTypes.MAGIC) && player.hasEffect(MobEffects.POISON)) {
             player.removeEffect(MobEffects.POISON);
-        } else if (source == DamageSource.WITHER) {
+        } else if (source.is(DamageTypes.WITHER)) {
             player.removeEffect(MobEffects.WITHER);
-        } else if (source == DamageSource.ON_FIRE) {
+        } else if (source.is(DamageTypes.ON_FIRE) || source.is(DamageTypes.IN_FIRE)) {
             player.clearFire();
         }
     }
 
     @SubscribeEvent
     public static void onLivingUpdatePlayer(LivingEvent.LivingTickEvent event) {
-        if (event.getEntity() instanceof Player player && !event.getEntity().level.isClientSide) {
+        if (event.getEntity() instanceof Player player && !event.getEntity().level().isClientSide) {
             if (player.getPersistentData().contains("forcefieldTicks")) {
                 int ticks = player.getPersistentData().getInt("forcefieldTicks");
                 if (ticks > 0) {

@@ -28,5 +28,6 @@ public class ModGenerator {
 
         generator.addProvider(true, new GeneratorItemModels(generator, helper));
         generator.addProvider(true, new GeneratorLanguageEnglish(generator));
+        generator.addProvider(true, new GeneratorSpriteSource(generator.getPackOutput(), helper));
     }
 }

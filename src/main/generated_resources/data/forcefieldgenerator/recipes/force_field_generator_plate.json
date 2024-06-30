@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "e": {
       "tag": "forge:gems/emerald"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "forcefieldgenerator:force_field_generator_plate"
-  }
+  },
+  "show_notification": true
 }

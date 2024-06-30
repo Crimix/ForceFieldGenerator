@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "d": {
       "item": "minecraft:dragon_breath"
@@ -24,5 +25,6 @@
   ],
   "result": {
     "item": "forcefieldgenerator:force_field_generator_core"
-  }
+  },
+  "show_notification": true
 }

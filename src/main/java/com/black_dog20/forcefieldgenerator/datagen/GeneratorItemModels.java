@@ -10,7 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class GeneratorItemModels extends BaseItemModelProvider {
 
     public GeneratorItemModels(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, ForceFieldGenerator.MOD_ID, existingFileHelper);
+        super(generator.getPackOutput(), ForceFieldGenerator.MOD_ID, existingFileHelper);
     }
 
     @Override

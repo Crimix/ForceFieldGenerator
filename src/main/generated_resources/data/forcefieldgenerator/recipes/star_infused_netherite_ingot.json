@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "addition": {
     "tag": "forge:nether_stars"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "forcefieldgenerator:star_infused_netherite_ingot"
+  },
+  "template": {
+    "item": "forcefieldgenerator:force_field_generator_template"
   }
 }

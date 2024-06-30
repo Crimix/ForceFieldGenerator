@@ -11,7 +11,7 @@ import static com.black_dog20.forcefieldgenerator.utils.Translations.*;
 public class GeneratorLanguageEnglish extends BaseLanguageProvider {
 
     public GeneratorLanguageEnglish(DataGenerator gen) {
-        super(gen, ForceFieldGenerator.MOD_ID, "en_us");
+        super(gen.getPackOutput(), ForceFieldGenerator.MOD_ID, "en_us");
     }
 
     @Override
@@ -28,6 +28,12 @@ public class GeneratorLanguageEnglish extends BaseLanguageProvider {
         add(ModItems.FORCE_FIELD_GENERATOR_PLATE.get(), "Force-Field Generator Plate");
         add(ModItems.FORCE_FIELD_GENERATOR_CORE.get(), "Force-Field Generator Core");
         add(ModItems.STAR_INFUSED_NETHERITE_INGOT.get(), "Start-Infused Netherite");
+
+        addPrefixed(TEMPLATE_DESCRIPTION, "Force-Field Generator Crafting", ChatFormatting.GRAY);
+        addPrefixed(TEMPLATE_SLOT_DESCRIPTION, "Netherite Ingot", ChatFormatting.BLUE);
+        addPrefixed(TEMPLATE_ADDITIONS_SLOT_DESCRIPTION, "Nether Star", ChatFormatting.BLUE);
+        addPrefixed(TEMPLATE_SLOT_INFO, "Add Netherite Ingot");
+        addPrefixed(TEMPLATE_ADDITIONS_SLOT_INFO, "Add Nether Star");
 
         addPrefixed(POWER_LOW, "WARNING Force-field power low!!", ChatFormatting.RED);
     }
