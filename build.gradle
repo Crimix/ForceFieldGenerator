@@ -4,7 +4,6 @@ plugins {
 }
 
 apply from: 'https://raw.githubusercontent.com/Crimix/bml/1.20/common.gradle'
-apply from: 'https://raw.githubusercontent.com/Crimix/bml/1.20/shadow.gradle'
 
 version = version_major + '.' + version_minor + '.' + version_patch
 group = "${mod_group}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html

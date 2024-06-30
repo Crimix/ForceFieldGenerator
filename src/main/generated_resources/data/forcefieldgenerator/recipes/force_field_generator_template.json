@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "d": {
+      "tag": "forge:gems/emerald"
+    },
+    "o": {
+      "tag": "forge:ingots/netherite"
+    },
+    "s": {
+      "tag": "forge:nether_stars"
+    }
+  },
+  "pattern": [
+    "oso",
+    "odo",
+    "ooo"
+  ],
+  "result": {
+    "item": "forcefieldgenerator:force_field_generator_template"
+  },
+  "show_notification": true
+}
